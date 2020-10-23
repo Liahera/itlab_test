@@ -1,0 +1,32 @@
+a:hover {
+    text-decoration: none;
+}
+
+.main-li {
+    position: relative;
+}
+
+.dropdown-user-info {
+    left: 10px;
+}
+
+.navbar-collapse {
+    justify-content: space-between;
+}
+.pagination {
+
+    padding-left: 0px;
+    margin: 10px 0;
+
+}
+.container-row {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:space-around;
+}
+
+.container-form {
+    width: 40%;
+}
+
+
