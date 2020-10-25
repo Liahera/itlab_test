@@ -4,9 +4,7 @@
         <h1>Список статей</h1>
         <br>
         <a href="{{route('articles.add')}}" class="btn btn-info">Добавить статью</a>
-        <br><br><br>
-
-        <br><br><br>
+        <br><br>
         <table class="table table-bordered">
             <tr>
                 <th>#</th>
@@ -19,8 +17,8 @@
                 <tr>
                     <td>{{$article->id}}</td>
                     <td>{{$article->title}}</td>
-                    <td>{{ $article->created_at->format('d-m-Y H:i') }}</td>
-                    <td>{{ $article->users()->first()->name }} {{ $article->users()->first()->surname }}  </td>
+                    <td>{{$article->created_at->format('d-m-Y H:i') }}</td>
+                    <td>{{$article->users()->first()->name }} {{ $article->users()->first()->surname }}  </td>
                     <td><a href="{!! route('articles.edit', ['id' => $article->id]) !!}">Редактировать</a> ||
                         <a href="javascript:;" class="delete" rel="{{ $article->id }} ">Удалить</a></td>
                 </tr>

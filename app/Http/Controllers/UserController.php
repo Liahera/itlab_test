@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\ImgService;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
+
 
 
 class UserController extends Controller
@@ -22,7 +18,6 @@ class UserController extends Controller
     {
         $this->imgService=$imgService;
     }
-
     public function profile()
   {
       return view('profile');
@@ -34,13 +29,13 @@ class UserController extends Controller
   public function editRequest()
   {
       $data = request()->validate([
-          "name" => "required|max:255",
-          "email" => 'required|email',
-          "surname" => "required|max:255",
-          "nickname" => "required|max:255",
-          "phone" => "required",
-          "sex" => "required",
-          "avatar"=>"required",
+          'name' => ['required', 'string', 'max:25'],
+          'phone' => 'required|min:6|numeric',
+          'surname' => ['required', 'string', 'max:25'],
+          'nickname' => ['required', 'string', 'max:25','unique:users'],
+          'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+          'password' => ['required', 'string', 'min:3', 'confirmed'],
+          'avatar'  => 'required|image|mimes:jpeg,png|max:2048'
       ]);
 
       $icon = request()->file('avatar');
