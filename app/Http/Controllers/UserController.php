@@ -32,10 +32,9 @@ class UserController extends Controller
           'name' => ['required', 'string', 'max:25'],
           'phone' => 'required|min:6|numeric',
           'surname' => ['required', 'string', 'max:25'],
-          'nickname' => ['required', 'string', 'max:25','unique:users'],
-          'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
-          'password' => ['required', 'string', 'min:3', 'confirmed'],
-          'avatar'  => 'required|image|mimes:jpeg,png|max:2048'
+          'nickname' => ['required', 'string', 'max:25',],
+          'email' => ['required', 'string', 'email', 'max:50', ],
+          'avatar'  => '|image|mimes:jpeg,png|max:2048'
       ]);
 
       $icon = request()->file('avatar');

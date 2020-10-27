@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\CheckAuthor;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ Route::get('/profile/edit', [App\Http\Controllers\UserController::class,'edit'])
 Route::post('/profile/edit', [App\Http\Controllers\UserController::class,'editRequest'])->name('editRequest');
 
 Route::get('/admin', [App\Http\Controllers\Admin\AccountController::class, 'index'])->name('admin.panel');
-Route::get('/admin/articles', [App\Http\Controllers\Admin\ArticlesController::class, 'index'])->name('articles');
+Route::get('/admin/articles', [App\Http\Controllers\Admin\ArticlesController::class, 'index'])->name('articles')->middleware(CheckAuthor::class);
 Route::get('/admin/articles/add', [App\Http\Controllers\Admin\ArticlesController::class,'addArticle'])->name('articles.add');
 Route::post('/admin/articles/add', [App\Http\Controllers\Admin\ArticlesController::class,'addRequestArticle']);
 Route::get('/admin/articles/edit/{id}', [App\Http\Controllers\Admin\ArticlesController::class,'editArticle'])->where('id', '\d+')->name('articles.edit');
